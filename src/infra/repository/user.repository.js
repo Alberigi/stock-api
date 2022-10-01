@@ -1,36 +1,36 @@
-const { ObjectId } = require('mongoose').Types;
+const { ObjectId } = require("mongoose").Types;
 
 class UserRepository {
-    userModel = {};
+  userModel = {};
 
-    constructor(userModel) {
-        this.userModel = userModel;
-    }
-    
-    async findById(id) {
-        return this.userModel.findOne({_id: ObjectId(id)});
-    }
+  constructor(userModel) {
+    this.userModel = userModel;
+  }
 
-    async findAll() {
-        return this.userModel.find();
-    }
-    
-    async findByEmail(email) {
-        return this.userModel.findOne({ email });
-    }
+  async findById(id) {
+    return this.userModel.findOne({ _id: ObjectId(id) });
+  }
 
-    async save(user) {
-        const result = await this.userModel.create(user);
-        return result.save();
-    }
+  async findAll() {
+    return this.userModel.find();
+  }
 
-    async update(user) {
-        return this.userModel.updateOne({_id: user._id}, user);
-    }
+  async findByEmail(email) {
+    return this.userModel.findOne({ email });
+  }
 
-    async delete(id) {
-        return this.userModel.deleteOne({_id: ObjectId(id)});
-    }
+  async save(user) {
+    const result = await this.userModel.create(user);
+    return result.save();
+  }
+
+  async update(user) {
+    return this.userModel.findByIdAndUpdate({ _id: ObjectId(user._id) }, user);
+  }
+
+  async delete(id) {
+    return this.userModel.deleteOne({ _id: ObjectId(id) });
+  }
 }
 
 module.exports = UserRepository;

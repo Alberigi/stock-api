@@ -25,7 +25,7 @@ An api in node.js based on a stock purchase system, using mongoose for mongoDB o
 
 ## Pending features
 
-- [ ] e2e tests
+- [x] e2e tests
 - [ ] wallet balance
 
 ---
